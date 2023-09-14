@@ -1,0 +1,3 @@
+(library
+ (public_name scache)
+ (libraries bos unix sqlite3 fpath fmt))

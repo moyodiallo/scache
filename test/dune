@@ -1,0 +1,3 @@
+(test
+ (name scache)
+ (libraries scache alcotest))
