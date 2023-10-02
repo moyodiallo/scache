@@ -7,9 +7,9 @@
 (source
  (github username/reponame))
 
-(authors "Author Name")
+(authors "moyodiallo@gmail.com")
 
-(maintainers "Maintainer Name")
+(maintainers "Alpha-Issiaga DIALLO <moyodiallo@gmail.com>")
 
 (license LICENSE)
 
@@ -17,10 +17,11 @@
 
 (package
  (name scache)
- (synopsis "A short synopsis")
- (description "A longer description")
- (depends ocaml dune)
- (tags
-  (topics "to describe" your project)))
-
-; See the complete stanza docs at https://dune.readthedocs.io/en/stable/dune-files.html#dune-project
+ (synopsis "Simple cache system base on Sqlite3")
+ (depends
+  (alcotest :with-test)
+  sqlite3
+  fpath
+  fmt
+  bos
+  ocaml))
