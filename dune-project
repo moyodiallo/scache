@@ -19,6 +19,7 @@
  (name scache)
  (synopsis "Simple cache system base on Sqlite3")
  (depends
+  (ocaml (>= 4.12.0))
   (alcotest :with-test)
   sqlite3
   fpath

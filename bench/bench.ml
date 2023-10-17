@@ -68,7 +68,7 @@ let () =
     remove_time = 0.0;
   } in
   let n_times = 100_000 in
-  let data = List.init n_times (fun i -> String.cat "key" @@ string_of_int i, "same value") in
+  let data = List.init n_times (fun i -> "key" ^ (string_of_int i), "same value") in
   let run = operation bench n_times data in
   run Write;
   run Read;
