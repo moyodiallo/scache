@@ -23,6 +23,6 @@
   (alcotest :with-test)
   sqlite3
   fpath
-  fmt
+  (fmt (>= 0.8.7))
   bos
   ocaml))

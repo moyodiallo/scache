@@ -13,5 +13,8 @@ end
 
 Scache use some component of [ocurrent](https://github.com/ocurrent/ocurrent) about __SQlite3__. The aims of Scache is to light and simplify as much as possible the (key,value) caching.
 
+Scache create `./var/db/` directory where the SQlite file `scache.db` is stored. The env variable `SCACHE_VAR` can be used to set a preference directory (ex. `SCACHE_VAR=~/.var/db`).
+
+
 # Licensing
 Scache is licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for the full license text.

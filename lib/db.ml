@@ -53,8 +53,12 @@ let query_some stmt values =
 
 let v () =
   lazy (
-    let db_dir = Disk_store.state_dir "db" in
-    let db = Sqlite3.db_open Fpath.(to_string (db_dir / "sqlite_simple_cache.db")) in
+    let db_dir =
+      match Sys.getenv_opt "SCACHE_VAR" with
+      | Some dir -> Fpath.v dir
+      | None -> Disk_store.state_dir "db"
+    in
+    let db = Sqlite3.db_open Fpath.(to_string (db_dir / "scache.db")) in
     Sqlite3.busy_timeout db 1000;
     exec_literal db "PRAGMA journal_mode=WAL";
     exec_literal db "PRAGMA synchronous=NORMAL";
