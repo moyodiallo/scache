@@ -2,6 +2,8 @@
 
 (name scache)
 
+(formatting disabled)
+
 (generate_opam_files true)
 
 (source
