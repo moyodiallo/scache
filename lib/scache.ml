@@ -75,16 +75,12 @@ let remove_cache ~name = Db.drop_name ~name
 
 module Cache = struct
 
-  type t = { name:string; tmp: (string , string) Hashtbl.t }
+  type t = { name:string }
 
-  let get t ~key :string option = Hashtbl.find_opt t.tmp key |> function
-    | Some x -> Some x
-    | None ->
-      match Db.get_value ~name:t.name key with
-      | None -> None
-      | Some value ->
-        Hashtbl.add t.tmp key value;
-        Some value
+  let get t ~key :string option = 
+    match Db.get_value ~name:t.name key with
+    | None -> None
+    | Some value -> Some value
 
   let set t ~key ~value : unit =
     let time = Unix.gmtime (Unix.time ()) in
@@ -93,5 +89,5 @@ module Cache = struct
   let remove t ~key =
     Db.drop_value ~name:t.name key
 
-  let start ~name = { name; tmp = Hashtbl.create 100}
+  let start ~name = { name }
 end

@@ -22,6 +22,14 @@ let removing () =
   let result = Cache.get cache ~key:"key2" in
   Alcotest.(check (option string)) "same value" expected result
 
+let modifying () =
+  Cache.set cache ~key:"key3" ~value:"value1";
+  let _ = Cache.get cache ~key:"key3" in
+  Cache.set cache ~key:"key3" ~value:"value2";
+  let expected = Some "value2" in
+  let result = Cache.get cache ~key:"key3" in
+  Alcotest.(check (option string)) "same value" expected result
+
 
 let () =
   let open Alcotest in
@@ -29,7 +37,7 @@ let () =
     "simple", [
       test_case "recording" `Quick recording;
       test_case "reading"   `Quick reading;
-      test_case "removing"  `Quick removing
+      test_case "removing"  `Quick removing;
+      test_case "modifying" `Quick modifying
     ]
   ]
-
